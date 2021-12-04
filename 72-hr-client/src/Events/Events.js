@@ -1,12 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import './App.css';
-import Events from './Events/Events';
 
 
+const Events = () => {
 
-function App() {
-
-  const [latitude, setLatitude] = useState("");
+    const [latitude, setLatitude] = useState("");
     const [longitude, setLongitude] = useState("");
     const [locationDataFound, setLocationDataFound] = useState(false);
     
@@ -34,12 +31,21 @@ function App() {
         setLocationDataFound(true);
       }
     }, [latitude, longitude]);
-    
-  return (
-    <div>
-      OUR AWESOME APP WILL GO HERE
-    </div>
-  );
-}
+  
+    // useEffect(() => {
+    //   fetchEvents();
+    // });
 
-export default App;
+    // fetchEvents = () => {
+    //     console.log(position)
+    // }
+
+    // fetchEvents();
+
+    return(
+       <div>
+           LOCATION
+       </div> 
+        )
+}
+    export default Events;
