@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import Geohash from 'latlon-geohash';
 import Events from './Events/Events';
+import Weather from './Weather/Weather';
 
 function GeoLocate () {
-
+const [location, setLocation] = useState([]);
 const [latitude, setLatitude] = useState("");
 const [longitude, setLongitude] = useState("");
 const [geoHash, setGeoHash] = useState('');
@@ -11,7 +12,7 @@ const [geoHash, setGeoHash] = useState('');
 useEffect(() => {
     geoLocation();
     }, []);
-    
+
 const geoLocation = () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
@@ -21,6 +22,7 @@ const geoLocation = () => {
 };
 
 const showPosition = async (position) => {
+    setLocation([position.coords.latitude, position.coords.longitude]);
   setLatitude(position.coords.latitude);
   setLongitude(position.coords.longitude);
   setGeoHash(Geohash.encode(position.coords.latitude, position.coords.longitude, 9))
@@ -35,6 +37,7 @@ useEffect(() => {
 
 return(
     <div>
+        <Weather location={location} />
         <Events geoHash={geoHash}/>
     </div>
 )

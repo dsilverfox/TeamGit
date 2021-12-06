@@ -1,4 +1,5 @@
  import React, { useEffect, useState } from 'react'; //useEffect
+ import GeoLocate from '../GeoLocate';
  
  //material ui installed in TeamGit don't forget to import it if you use it.
  const Weather = props => {
@@ -9,12 +10,10 @@
     //  const key = '63dcb297673179ea05ba355cfa80fe06';
      const [units, setUnits] = useState("imperial"); //&units=${units}
 
-     useEffect(() => {
-         getWeather();
-     }, [props.location])
+
 
      const getWeather = async () => {
-         let response = await fetch(`${baseURL}?lat=${props.location[0]}&lon=${props.location[1]}&appid=${key}`);
+         let response = await fetch(`${baseURL}lat=${props.location[0]}&lon=${props.location[1]}&units=${units}&appid=${key}`);
          let json = await response.json();
 
          setWeather(json);
@@ -26,6 +25,10 @@
          getWeather();
          console.log(units);
      } 
+
+          useEffect(() => {
+         getWeather();
+     }, [props.location])
 
      return (
          <div className='main'>
