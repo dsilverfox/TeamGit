@@ -1,43 +1,47 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import './App.css';
-import Events from './Events/Events';
+import GeoLocate from './GeoLocate'
 
 
 
-function App() {
+function App () {
 
-  const [latitude, setLatitude] = useState("");
-    const [longitude, setLongitude] = useState("");
-    const [locationDataFound, setLocationDataFound] = useState(false);
+  // const [latitude, setLatitude] = useState("");
+  //   const [longitude, setLongitude] = useState("");
+  //   const [geoHash, setGeoHash] = useState('');
+    // const [locationDataFound, setLocationDataFound] = useState(false);
     
+
+  //   useEffect(() => {
+  //   geoLocation();
+  // }, []);
+
+  //   const geoLocation = () => {
+  //     if (navigator.geolocation) {
+  //       navigator.geolocation.getCurrentPosition(showPosition);
+  //     } else {
+  //       console.log("Geolocation is not supported by this browser.");
+  //     }
+  //   };
   
-    useEffect(() => {
-      geoLocation();
-    }, []);
+  //   const showPosition = async (position) => {
+  //     setLatitude(position.coords.latitude);
+  //     setLongitude(position.coords.longitude);
+  //     setGeoHash(Geohash.encode(position.coords.latitude, position.coords.longitude, 9))
+  //   };
   
-    const geoLocation = () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-      } else {
-        console.log("Geolocation is not supported by this browser.");
-      }
-    };
-  
-    const showPosition = (position) => {
-      setLatitude(position.coords.latitude);
-      setLongitude(position.coords.longitude);
-    };
-  
-    useEffect(() => {
-      if (latitude && longitude) {
-        console.log("Latitude:", latitude, "Longitude:", longitude);
-        setLocationDataFound(true);
-      }
-    }, [latitude, longitude]);
-    
+  //   useEffect(() => {
+  //     if (latitude && longitude && geoHash) {
+  //       console.log("Latitude:", latitude, "Longitude:", longitude, "geohash:", geoHash);
+      
+  //     }
+  //   }, [latitude, longitude, geoHash]);
+
+
+
   return (
     <div>
-      OUR AWESOME APP WILL GO HERE
+      <GeoLocate/>
     </div>
   );
 }
