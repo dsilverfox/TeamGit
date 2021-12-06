@@ -1,32 +1,40 @@
-import React, {useEffect, useState} from 'react';
-
+import React, {useState, useEffect} from 'react';
 import './App.css';
-import './Weather/Weather';
-// import './Events/Events';
-// import './satellite/Satellite';
+// import Events from './Events/Events';
+import Weather from './Weather/Weather';
+// import Satellite from './satellite/Satellite';
+
+
 
 function App() {
-  const [location, setLocation] = useState('');
-  const [latitude, setLatitude] = useState('');
-  const [longitude, setLongitude] = useState('');
 
-
-
-    const geoLocation = () => {
-      if (navigator.geolocation) {
-      console.log(geoLocation)
-      // navigator.geolocation.getCurrentPosition(showPosition);
+  const [location, setLocation] = useState([]);
+  console.log(location);
+    
+  
+  useEffect(() => {
+    if (!navigator.geolocation) {
+      alert('Geolocation is not supported by your browser');
     } else {
-      console.log("Geolocation is not supported by this browser.");
+      navigator.geolocation.getCurrentPosition(success, err);
     }
+  }, [])
 
-    geoLocation();
-  };
+  const success = position => {
+    console.log(position.coords.latitude, position.coords.longitude);
 
+    setLocation([position.coords.latitude, position.coords.longitude]);
+  }
 
+  const err = () => {
+    alert('Unable to retrieve location');
+  }
+    
   return (
-    <div className="App">
-     
+    <div>
+      {/* <Satellite latitude={latitude} longitude={longitude} /> */}
+      <Weather location={location} />
+      {/* <Events latitude={latitude} longitude={longitude} /> */}
     </div>
   );
 }
