@@ -1,40 +1,48 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import './App.css';
-// import Events from './Events/Events';
-import Weather from './Weather/Weather';
-// import Satellite from './satellite/Satellite';
+import GeoLocate from './GeoLocate'
 
 
 
-function App() {
+function App () {
 
-  const [location, setLocation] = useState([]);
-  console.log(location);
+  // const [latitude, setLatitude] = useState("");
+  //   const [longitude, setLongitude] = useState("");
+  //   const [geoHash, setGeoHash] = useState('');
+    // const [locationDataFound, setLocationDataFound] = useState(false);
     
+
+  //   useEffect(() => {
+  //   geoLocation();
+  // }, []);
+
+  //   const geoLocation = () => {
+  //     if (navigator.geolocation) {
+  //       navigator.geolocation.getCurrentPosition(showPosition);
+  //     } else {
+  //       console.log("Geolocation is not supported by this browser.");
+  //     }
+  //   };
   
-  useEffect(() => {
-    if (!navigator.geolocation) {
-      alert('Geolocation is not supported by your browser');
-    } else {
-      navigator.geolocation.getCurrentPosition(success, err);
-    }
-  }, [])
 
-  const success = position => {
-    console.log(position.coords.latitude, position.coords.longitude);
+  //   const showPosition = async (position) => {
+  //     setLatitude(position.coords.latitude);
+  //     setLongitude(position.coords.longitude);
+  //     setGeoHash(Geohash.encode(position.coords.latitude, position.coords.longitude, 9))
+  //   };
+  
+  //   useEffect(() => {
+  //     if (latitude && longitude && geoHash) {
+  //       console.log("Latitude:", latitude, "Longitude:", longitude, "geohash:", geoHash);
+      
+  //     }
+  //   }, [latitude, longitude, geoHash]);
 
-    setLocation([position.coords.latitude, position.coords.longitude]);
-  }
 
-  const err = () => {
-    alert('Unable to retrieve location');
-  }
-    
+
   return (
     <div>
-      {/* <Satellite latitude={latitude} longitude={longitude} /> */}
-      <Weather location={location} />
-      {/* <Events latitude={latitude} longitude={longitude} /> */}
+      <GeoLocate/>
     </div>
   );
 }
