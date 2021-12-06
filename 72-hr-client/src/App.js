@@ -23,8 +23,6 @@ function App () {
   //       console.log("Geolocation is not supported by this browser.");
   //     }
   //   };
-  
-
   //   const showPosition = async (position) => {
   //     setLatitude(position.coords.latitude);
   //     setLongitude(position.coords.longitude);

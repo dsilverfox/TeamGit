@@ -4,7 +4,8 @@ import Events from './Events/Events';
 import Weather from './Weather/Weather';
 
 function GeoLocate () {
-const [location, setLocation] = useState([]);
+
+ const [location, setLocation] = useState([]);
 const [latitude, setLatitude] = useState("");
 const [longitude, setLongitude] = useState("");
 const [geoHash, setGeoHash] = useState('');
