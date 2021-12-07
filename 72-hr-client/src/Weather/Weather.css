@@ -1,0 +1,131 @@
+.loading{
+  background-color: black;
+  color: white;
+}
+.display {
+  margin: 60px;
+}
+.weatherInfo{
+  margin: 30px;
+}
+
+.weatherInfo li:first-child{
+	-webkit-animation: weatherInfo 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) .5s both;
+	animation: weatherInfo 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) .5s both;
+}
+
+.weatherInfo li:nth-child(2){
+	-webkit-animation: weatherInfo 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 1.5s both;
+	animation: weatherInfo 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 1.5s both;
+}
+
+.weatherInfo li:nth-child(3){
+	-webkit-animation: weatherInfo 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 2.5s both;
+	animation: weatherInfo 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 2.5s both;
+}
+
+.weatherInfo li:nth-child(4){
+	-webkit-animation: weatherInfo 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 3.5s both;
+	animation: weatherInfo 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 3.5s both;
+}
+
+.weatherInfo li:nth-child(5){
+	-webkit-animation: weatherInfo 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 4.5s both;
+	animation: weatherInfo 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 4.5s both;
+}
+
+.weatherInfo li:nth-child(6){
+	-webkit-animation: weatherInfo 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 5.5s both;
+	animation: weatherInfo 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) 5.5s both;
+}
+
+@-webkit-keyframes weatherInfo {
+  0% {
+    letter-spacing: 1em;
+    -webkit-transform: translateZ(400px);
+            transform: translateZ(400px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
+@keyframes weatherInfo {
+  0% {
+    letter-spacing: 1em;
+    -webkit-transform: translateZ(400px);
+            transform: translateZ(400px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+.button {
+  border-radius: 10px;
+  margin: 30px 30px 30px 100px;
+  width: 230px;
+  height: 50px;
+}
+
+.button {
+	-webkit-animation: button 2s ease-in-out 5s both;
+	        animation: button 2s ease-in-out 5s both;
+}
+
+@-webkit-keyframes button {
+  0% {
+    -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+    opacity: 0;
+  }
+  60% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    opacity: 0;
+  }
+  80% {
+    -webkit-transform: scale(2.2);
+            transform: scale(2.2);
+    opacity: 0.8;
+  }
+  100% {
+    -webkit-transform: scale(1.0);
+            transform: scale(1.0);
+    opacity: 1;
+   }
+}
+
+@keyframes button {
+  0% {
+    -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+    opacity: 0;
+  }
+  60% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    opacity: 0;
+  }
+  80% {
+    -webkit-transform: scale(2.2);
+            transform: scale(2.2);
+    opacity: 0.8;
+  }
+  100% {
+    -webkit-transform: scale(1.0);
+            transform: scale(1.0);
+    opacity: 1;
+  }
+}
