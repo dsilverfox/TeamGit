@@ -35,7 +35,6 @@ const Events = (props) => {
 
     return(
         <div>
-            Event component
             {
                 toggle ? <DisplayEvents events={events} /> : <p>Nothing to display</p>
             }
