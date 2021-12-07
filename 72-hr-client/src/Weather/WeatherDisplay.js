@@ -1,4 +1,7 @@
 import React from 'react'
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import './Weather.css'
 
 const WeatherDisplay = (props) =>{
 
@@ -13,7 +16,9 @@ const WeatherDisplay = (props) =>{
                     <li>{`The atmospheric pressure is ${props.weather.main.pressure} bars.`}</li>
                     <li>{`The humidity is ${props.weather.main.humidity}%`}</li>
                 </ul>
-            <button className='button' onClick={props.changeUnit}>Unit Toggle</button>
+            <Stack direction='row'>
+            <Button variant='contained' className='button' onClick={props.changeUnit}>Unit Toggle</Button>
+            </Stack>
              </div>
     )};
 export default WeatherDisplay;
