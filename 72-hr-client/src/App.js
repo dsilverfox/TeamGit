@@ -1,17 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 // import Events from './Events/Events';
-import Weather from './Weather/Weather';
+import Weather from './Weather/Weather'
 // import Satellite from './satellite/Satellite';
 
 
 
-function App() {
+const App = () => {
 
-  const [location, setLocation] = useState([]);
+  const [location, setLocation] = useState(null);
   console.log(location);
-    
-  
+
   useEffect(() => {
     if (!navigator.geolocation) {
       alert('Geolocation is not supported by your browser');
@@ -29,14 +28,12 @@ function App() {
   const err = () => {
     alert('Unable to retrieve location');
   }
-    
+
   return (
     <div>
-      {/* <Satellite latitude={latitude} longitude={longitude} /> */}
       <Weather location={location} />
-      {/* <Events latitude={latitude} longitude={longitude} /> */}
     </div>
-  );
+  )
 }
 
 export default App;
