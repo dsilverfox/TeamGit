@@ -1,40 +1,44 @@
-import React, {useState, useEffect, Suspense} from 'react';
-import { Button, Container, Card, CardContent, CardMedia, Typography, CardActionArea, CardActions } from '@mui/material';
+import React, {useState, useEffect} from 'react';
+import DisplayEvents from './DisplayEvents/DisplayEvents';
+
 
 const Events = (props) => {
     const key = 'FnaYTDcosjKQCuUiXFfwUinwdIVYh0ag';
     // const geohash = props.geoHash
 
 
-    const [events, setEvents] = useState([])
+    const [events, setEvents] = useState([]);
+    const [toggle, setToggle] = useState(false)
+    // const [eventArray, setEventArray] = useState({});
     
     
     
 
-    const getEvents = async () => {
-       await fetch(`https://cors-anywhere.herokuapp.com/app.ticketmaster.com/discovery/v2/events.json?geoPoint=${props.geoHash}&apikey=${key}`, {
-            method: 'GET',
-            headers:new Headers({
-                "Content-type":'application/json',
-                "Access-Control-Allow-Origin":'*'
-            })
-        })
-        .then ((res) => res.json())
-        .then ((json) => setEvents(json))
-        .then (console.log(events))
+   useEffect(() => {
+       if (props.geoHash === null) {
+           return;
+        } else {
+            const getEvents = async () => {
+                const response = await fetch(`https://cors-anywhere.herokuapp.com/app.ticketmaster.com/discovery/v2/events.json?geoPoint=${props.geoHash}&apikey=${key}`);
+                const json = await response.json();
 
-}
-useEffect(() => { 
-    getEvents();
-}, [props.geoHash])
+                setEvents(json);
+                setToggle(true);
+                }
+                getEvents();
+            }
+
+            return () => {
+                setToggle(false);
+            }
+    }, [props.geoHash])
 
     return(
         <div>
-           <Suspense fallback={<div>Loading Events</div>}>
-            <Container>
-               EVENTS WILL GO HERE 
-            </Container>
-           </Suspense>
+            Event component
+            {
+                toggle ? <DisplayEvents events={events} /> : <p>Nothing to display</p>
+            }
            </div>
     )
 }
