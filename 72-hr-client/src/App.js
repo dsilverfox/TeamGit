@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 // import Events from './Events/Events';
 import Weather from './Weather/Weather'
