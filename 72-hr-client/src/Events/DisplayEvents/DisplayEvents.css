@@ -1,0 +1,5 @@
+.mainDiv {
+    text-align: center;
+    display:inline-flex;
+    flex-wrap: wrap;
+}

@@ -47,4 +47,4 @@ return(
 
 
 
-export default GeoLocate;
+// export default GeoLocate;

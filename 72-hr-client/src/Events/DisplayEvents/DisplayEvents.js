@@ -10,7 +10,10 @@ const DisplayEvents = (props) => {
     const Events = props.events;
 
     return(
-            <div>
+            <div className='mainDiv'>
+                <div>
+                <h1>Upcoming Events Near You</h1>
+                </div>
             {Events._embedded.events.map(myEvents => {
                 return (
                     <div key={myEvents.id}>

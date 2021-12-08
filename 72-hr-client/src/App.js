@@ -1,15 +1,19 @@
 
 import React, {useEffect, useState} from 'react';
 import './App.css';
-// import Events from './Events/Events';
+import Geohash from 'latlon-geohash';
+import Events from './Events/Events';
 import Weather from './Weather/Weather'
-// import Satellite from './satellite/Satellite';
+import Satellite from './Satellite/Satellite';
 
 
 
 const App = () => {
 
   const [location, setLocation] = useState(null);
+//   const [latitude, setLatitude] = useState("");
+// const [longitude, setLongitude] = useState("");
+const [geoHash, setGeoHash] = useState('');
   console.log(location);
 
   useEffect(() => {
@@ -24,6 +28,9 @@ const App = () => {
     console.log(position.coords.latitude, position.coords.longitude);
 
     setLocation([position.coords.latitude, position.coords.longitude]);
+    // setLatitude(position.coords.latitude);
+    // setLongitude(position.coords.longitude);
+    setGeoHash(Geohash.encode(position.coords.latitude, position.coords.longitude, 9))
   }
 
   const err = () => {
@@ -32,7 +39,9 @@ const App = () => {
 
   return (
     <div>
+      <Satellite location={location} />
       <Weather location={location} />
+      <Events geoHash={geoHash} />
     </div>
   )
 }
