@@ -1,6 +1,6 @@
+
 import React, {useState, useEffect} from 'react';
 import DisplayEvents from './DisplayEvents/DisplayEvents';
-
 
 const Events = (props) => {
     const key = 'FnaYTDcosjKQCuUiXFfwUinwdIVYh0ag';
@@ -9,7 +9,6 @@ const Events = (props) => {
 
     const [events, setEvents] = useState([]);
     const [toggle, setToggle] = useState(false)
-    // const [eventArray, setEventArray] = useState({});
     
     
     
@@ -38,6 +37,7 @@ const Events = (props) => {
             {
                 toggle ? <DisplayEvents events={events} /> : <p>Nothing to display</p>
             }
+
            </div>
     )
 }

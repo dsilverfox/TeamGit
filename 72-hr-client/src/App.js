@@ -1,48 +1,40 @@
-import React from 'react';
+
+import React, {useEffect, useState} from 'react';
 import './App.css';
-import GeoLocate from './GeoLocate'
+// import Events from './Events/Events';
+import Weather from './Weather/Weather'
+// import Satellite from './satellite/Satellite';
 
 
 
-function App () {
+const App = () => {
 
-  // const [latitude, setLatitude] = useState("");
-  //   const [longitude, setLongitude] = useState("");
-  //   const [geoHash, setGeoHash] = useState('');
-    // const [locationDataFound, setLocationDataFound] = useState(false);
-    
+  const [location, setLocation] = useState(null);
+  console.log(location);
 
-  //   useEffect(() => {
-  //   geoLocation();
-  // }, []);
+  useEffect(() => {
+    if (!navigator.geolocation) {
+      alert('Geolocation is not supported by your browser');
+    } else {
+      navigator.geolocation.getCurrentPosition(success, err);
+    }
+  }, [])
 
-  //   const geoLocation = () => {
-  //     if (navigator.geolocation) {
-  //       navigator.geolocation.getCurrentPosition(showPosition);
-  //     } else {
-  //       console.log("Geolocation is not supported by this browser.");
-  //     }
-  //   };
-  //   const showPosition = async (position) => {
-  //     setLatitude(position.coords.latitude);
-  //     setLongitude(position.coords.longitude);
-  //     setGeoHash(Geohash.encode(position.coords.latitude, position.coords.longitude, 9))
-  //   };
-  
-  //   useEffect(() => {
-  //     if (latitude && longitude && geoHash) {
-  //       console.log("Latitude:", latitude, "Longitude:", longitude, "geohash:", geoHash);
-      
-  //     }
-  //   }, [latitude, longitude, geoHash]);
+  const success = position => {
+    console.log(position.coords.latitude, position.coords.longitude);
 
+    setLocation([position.coords.latitude, position.coords.longitude]);
+  }
 
+  const err = () => {
+    alert('Unable to retrieve location');
+  }
 
   return (
     <div>
-      <GeoLocate/>
+      <Weather location={location} />
     </div>
-  );
+  )
 }
 
 export default App;

@@ -1,27 +1,24 @@
 import React from 'react'
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import './Weather.css'
 
 const WeatherDisplay = (props) =>{
 
     return(
-        <div>
-
-        <h1>Weathery Bit</h1>
-                 <h3>Data grouping 1</h3>
-<ul className='weatherInfo'>
-                <li>{`This is an attempt to get this fucking thing working ${props.temp}. degrees.`}</li>
-                <li>{`However, to you it may feel ${props.feels} degrees.`}</li>
-                <li>{`The tempurature is supposed to get down to ${props.min} degrees.`}</li>
-                <li>{`The temperature will be as high as ${props.max} degrees.`} </li>
-                <li>{`The atmospheric pressure is ${props.pressure} bars.`}</li>
-                <li>{`The humidity is ${props.humidity}%`}</li>
-</ul>
-
-{/*Crashes the app if it loads before we have an array in weather.*/ }
-
-<button onClick={props.changeUnit}> Click me </button> {/*toggle works kind of, must click twice to get it to toggle the first time. */ }
-<button onClick={props.getWeather}> What's the Weather?</button>
-{/* have to sometimes click twice to get it to fire */ }
-
-</div>
+        <div className='display'>
+        <h1>Weather Information</h1>
+            <ul className='weatherInfo'>
+                    <li>{`The official temperature is ${props.weather.main.temp} degrees.`}</li>
+                    <li>{`However, to you it may feel ${props.weather.main.feels_like} degrees.`}</li>
+                    <li>{`The temperature is supposed to get down to ${props.weather.main.temp_min} degrees.`}</li>
+                    <li>{`The temperature will be as high as ${props.weather.main.temp_max} degrees.`} </li>
+                    <li>{`The atmospheric pressure is ${props.weather.main.pressure} bars.`}</li>
+                    <li>{`The humidity is ${props.weather.main.humidity}%`}</li>
+                </ul>
+            <Stack direction='row'>
+            <Button variant='contained' className='button' onClick={props.changeUnit}>Unit Toggle</Button>
+            </Stack>
+             </div>
     )};
 export default WeatherDisplay;
