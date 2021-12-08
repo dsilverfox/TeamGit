@@ -1,4 +1,5 @@
  import React, { useEffect, useState } from 'react'; //useEffect
+
  import WeatherDisplay from './WeatherDisplay';
  import './Weather.css'
 
@@ -9,6 +10,7 @@
      const [weather, setWeather] = useState([]);
      const baseURL = 'http://api.openweathermap.org/data/2.5/weather?';
      const key = '750ee8e3454df1bae3ec03c8ae23da35';
+
     // EXTRA KEY const key = '63dcb297673179ea05ba355cfa80fe06';
      const [toggle, setToggle] = useState(false); 
      const [units, setUnits] = useState("imperial");
@@ -16,6 +18,7 @@
      const getWeather = async () => {
          const response = await fetch(`${baseURL}lat=${props.location[0]}&lon=${props.location[1]}&units=${units}&appid=${key}`);
          const json = await response.json();
+
          setWeather(json);
          setToggle(true);
      }
@@ -38,6 +41,7 @@
      const changeUnit = () => {
          (units === 'imperial') ? setUnits('metric') : setUnits('imperial') //requires two clicks.
          getWeather();
+
      }
 
     return (
